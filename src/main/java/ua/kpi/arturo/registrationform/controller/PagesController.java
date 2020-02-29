@@ -13,6 +13,6 @@ public class PagesController {
 
     @RequestMapping("/registration")
     public String registrationForm() {
-        return "registrationForm";
+        return "registration.html";
     }
 }

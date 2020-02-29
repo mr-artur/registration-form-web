@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Registration form's Main</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/form.css">
+    </head>
+    <body class="bg-light">
+        <div class="container mt-5">
+            <form class="form d-flex flex-column align-items-center p-4 shadow">
+                <h2 class="mb-4">Register</h2>
+                <div class="form__element mb-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend shadow-sm">
+                            <span class="form__element__label input-group-text"
+                                  id="first-name_prepend"
+                            >
+                                First Name
+                            </span>
+                        </div>
+                        <input type="text"
+                               class="form-control shadow-sm"
+                               name="first-name"
+                               placeholder="First Name"
+                               aria-describedby="first-name_prepend"
+                               required
+                        />
+                    </div>
+                </div>
+                <div class="form__element mb-4">
+                    <div class="input-group">
+                        <div class="input-group-prepend shadow-sm">
+                            <span class="form__element__label input-group-text"
+                                  id="login_prepend"
+                            >
+                                Login
+                            </span>
+                        </div>
+                        <input type="text"
+                               class="form-control shadow-sm"
+                               name="login"
+                               placeholder="Login"
+                               aria-describedby="login_prepend"
+                               required
+                        />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">
+                    Submit
+                </button>
+            </form>
+        </div>
+        <script type="text/javascript" src="/static/js/registration.js"></script>
+    </body>
+</html>

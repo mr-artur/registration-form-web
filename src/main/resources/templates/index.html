@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login form's Main</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/form.css">
+    </head>
+    <body class="bg-light">
+        <div class="container mt-5">
+            <form class="form d-flex flex-column align-items-center p-4 shadow">
+                <h2 class="mb-4">Log In</h2>
+                <div class="form__element mb-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend shadow-sm">
+                            <span class="form__element__label input-group-text"
+                                  id="email_prepend"
+                            >
+                                Email
+                            </span>
+                        </div>
+                        <input type="email"
+                               class="form-control shadow-sm"
+                               name="email"
+                               placeholder="Email"
+                               aria-describedby="email_prepend"
+                               required
+                        />
+                    </div>
+                </div>
+                <div class="form__element mb-4">
+                    <div class="input-group">
+                        <div class="input-group-prepend shadow-sm">
+                            <span class="form__element__label input-group-text"
+                                  id="password_prepend"
+                            >
+                                Password
+                            </span>
+                        </div>
+                        <input type="password"
+                               class="form-control shadow-sm"
+                               name="password"
+                               placeholder="Password"
+                               aria-describedby="password_prepend"
+                               required
+                        />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">
+                    Submit
+                </button>
+            </form>
+        </div>
+        <script type="text/javascript" src="/static/js/main.js"></script>
+    </body>
+</html>
