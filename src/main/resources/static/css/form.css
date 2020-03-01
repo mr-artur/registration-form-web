@@ -20,3 +20,8 @@ a, a:hover  {
     color: white;
     text-decoration: none;
 }
+
+.alert-container {
+    max-width: 450px;
+    margin: auto;
+}
