@@ -3,19 +3,18 @@ package ua.kpi.arturo.registrationform.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import ua.kpi.arturo.registrationform.dto.LoginDto;
+import ua.kpi.arturo.registrationform.dto.RegistrationDto;
 
 @Slf4j
 @RestController
-@RequestMapping(value = "/")
-public class LoginFormController {
+@RequestMapping(value = "/api")
+public class RegistrationFormController {
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "login", method = RequestMethod.POST)
-    public void login(LoginDto dto){
+    @RequestMapping(value="/registration")
+    public void register(RegistrationDto dto){
         log.info("{}", dto);
     }
 }

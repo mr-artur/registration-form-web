@@ -5,8 +5,8 @@ import lombok.ToString;
 
 @AllArgsConstructor
 @ToString
-public class UserDTO {
+public class RegistrationDto {
 
-    private String email;
-    private String password;
+    private String firstName;
+    private String login;
 }

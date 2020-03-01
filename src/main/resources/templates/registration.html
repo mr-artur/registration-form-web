@@ -10,22 +10,25 @@
     </head>
     <body class="bg-light">
         <div class="container mt-5">
-            <form class="form d-flex flex-column align-items-center p-4 shadow">
+            <form id="form"
+                  class="form d-flex flex-column align-items-center p-4 shadow"
+                  data-url="/api/registration"
+            >
                 <h2 class="mb-4">Register</h2>
                 <div class="form__element mb-3">
                     <div class="input-group">
                         <div class="input-group-prepend shadow-sm">
                             <span class="form__element__label input-group-text"
-                                  id="first-name_prepend"
+                                  id="firstName_prepend"
                             >
                                 First Name
                             </span>
                         </div>
                         <input type="text"
                                class="form-control shadow-sm"
-                               name="first-name"
+                               name="firstName"
                                placeholder="First Name"
-                               aria-describedby="first-name_prepend"
+                               aria-describedby="firstName_prepend"
                                required
                         />
                     </div>
@@ -53,6 +56,6 @@
                 </button>
             </form>
         </div>
-        <script type="text/javascript" src="/js/registration.js"></script>
+        <script type="text/javascript" src="/js/form.js"></script>
     </body>
 </html>
