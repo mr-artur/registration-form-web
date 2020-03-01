@@ -15,3 +15,8 @@
 .form__element__label {
     width: 110px;
 }
+
+a, a:hover  {
+    color: white;
+    text-decoration: none;
+}
