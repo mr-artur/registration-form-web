@@ -3,19 +3,26 @@ const form = document.getElementById("form");
 
 const handleSubmit = e => {
     e.preventDefault();
-    const data = serializeData();
+    const inputs = form.getElementsByTagName("input");
+    const data = serializeData(inputs);
+    resetInputs(inputs);
     const {dataset: {url}} = form;
     sendForm(url, data);
 }
 
-const serializeData = () => {
-    const inputs = form.getElementsByTagName("input");
+const serializeData = inputs => {
     const parameters = [];
 
     for (let i = 0; i < inputs.length; i++) {
         parameters[i] = inputs[i].name + "=" + inputs[i].value;
     }
     return parameters.join("&");
+}
+
+const resetInputs = inputs => {
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = "";
+    }
 }
 
 const sendForm = (url, data) => {
