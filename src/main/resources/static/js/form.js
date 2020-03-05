@@ -4,10 +4,10 @@ const alertError = document.getElementById("alert-error");
 
 const handleSubmit = e => {
     e.preventDefault();
-    const inputs = form.getElementsByTagName("input");
+    const inputs = form.getElementsByClassName("input");
     const data = serializeData(inputs);
     resetInputs(inputs);
-    const {dataset: {url}} = form;
+    const { dataset: { url } } = form;
     sendForm(url, data);
 }
 

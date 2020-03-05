@@ -19,7 +19,7 @@
                             </span>
                         </div>
                         <input type="text"
-                               class="form-control shadow-sm"
+                               class="input form-control shadow-sm"
                                name="firstName"
                                th:placeholder="#{signUp.placeholder.firstName}"
                                aria-describedby="firstName_prepend"
@@ -37,7 +37,7 @@
                             </span>
                         </div>
                         <input type="text"
-                               class="form-control shadow-sm"
+                               class="input form-control shadow-sm"
                                name="firstNameNative"
                                th:placeholder="#{signUp.placeholder.firstNameNative}"
                                aria-describedby="firstNameNative_prepend"
@@ -55,7 +55,7 @@
                             </span>
                         </div>
                         <input type="text"
-                               class="form-control shadow-sm"
+                               class="input form-control shadow-sm"
                                name="lastName"
                                th:placeholder="#{signUp.placeholder.lastName}"
                                aria-describedby="lastName_prepend"
@@ -73,7 +73,7 @@
                             </span>
                         </div>
                         <input type="text"
-                               class="form-control shadow-sm"
+                               class="input form-control shadow-sm"
                                name="lastNameNative"
                                th:placeholder="#{signUp.placeholder.lastNameNative}"
                                aria-describedby="lastNameNative_prepend"
@@ -91,7 +91,7 @@
                             </span>
                         </div>
                         <input type="email"
-                               class="form-control shadow-sm"
+                               class="input form-control shadow-sm"
                                name="email"
                                th:placeholder="#{signUp.placeholder.email}"
                                aria-describedby="email_prepend"
@@ -108,13 +108,9 @@
                             >
                             </span>
                         </div>
-                        <input type="text"
-                               class="form-control shadow-sm"
-                               name="role"
-                               th:placeholder="#{signUp.placeholder.role}"
-                               aria-describedby="role_prepend"
-                               required
-                        />
+                        <select name="role" class="input custom-select" aria-describedby="role_prepend">
+                            <option th:each="role : ${roles}" th:value="${role}" th:text="${role}"></option>
+                        </select>
                     </div>
                 </div>
                 <button th:text="#{signUp.button.submit}" type="submit" class="btn btn-success mb-4"></button>

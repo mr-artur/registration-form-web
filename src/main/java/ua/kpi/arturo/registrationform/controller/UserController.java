@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import ua.kpi.arturo.registrationform.dto.LoginDto;
 import ua.kpi.arturo.registrationform.dto.NativeUserDto;
+import ua.kpi.arturo.registrationform.entity.RoleType;
 import ua.kpi.arturo.registrationform.entity.User;
 import ua.kpi.arturo.registrationform.service.UserService;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,7 +46,8 @@ public class UserController {
     }
 
     @GetMapping(value = "/new")
-    public String signUpPage() {
+    public String signUpPage(Model model) {
+        model.addAttribute("roles", RoleType.values());
         return "signUp.html";
     }
 
