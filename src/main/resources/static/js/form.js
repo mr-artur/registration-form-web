@@ -1,5 +1,6 @@
-const container = document.getElementById("mainContainer");
 const form = document.getElementById("form");
+const alertSuccess = document.getElementById("alert-success");
+const alertError = document.getElementById("alert-error");
 
 const handleSubmit = e => {
     e.preventDefault();
@@ -42,28 +43,33 @@ const sendForm = (url, data) => {
 }
 
 const showSuccess = () => {
-    const alert = buildAlert("success", "Data submit was successful");
-    container.appendChild(alert);
-    setTimeout(() => container.removeChild(alert), 2500);
-}
-
-const buildAlert = (type, message) => {
-    const div = document.createElement("div");
-    div.innerText = message;
-    div.classList.add("alert", `alert-${type}`, "mt-4");
-    div.style.margin = "auto";
-    div.style.maxWidth = "250px";
-    return div;
+    show(alertSuccess);
+    setTimeout(() => hide(alertSuccess), 2500);
 }
 
 const showError = () => {
-    const alert = buildAlert("danger", "Error in data submitting");
-    container.appendChild(alert);
-    setTimeout(() => container.removeChild(alert), 2500);
+    show(alertError);
+    setTimeout(() => hide(alertError), 2500);
+}
+
+const hide = element => {
+    element.classList.add("hidden");
+}
+
+const show = element => {
+    element.classList.remove("hidden");
 }
 
 const init = () => {
     form.addEventListener("submit", handleSubmit);
+}
+
+if (alertSuccess) {
+    hide(alertSuccess);
+}
+
+if (alertError) {
+    hide(alertError);
 }
 
 if (form) {
