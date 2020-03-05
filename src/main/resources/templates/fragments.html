@@ -4,10 +4,12 @@
     <title th:text="${title}"></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
     <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/languages.css">
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/form.css">
 </head>
 
 <div th:fragment="languages" class="languages" xmlns:th="http://www.w3.org/1999/xhtml">
-    <link rel="stylesheet" href="/css/languages.css">
     <button type="button" class="btn btn-primary btn-language" value="en">EN</button>
     <button type="button" class="btn btn-secondary btn-language" value="ru">RU</button>
     <script type="text/javascript" src="/js/changeLanguage.js"></script>

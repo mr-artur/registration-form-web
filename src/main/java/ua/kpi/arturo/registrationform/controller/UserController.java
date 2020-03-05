@@ -55,7 +55,6 @@ public class UserController {
     public String getAll(Model model) {
         List<User> users = userService.getAllUsers();
         model.addAttribute("users", users);
-        model.addAttribute("title", "All Users");
         return "allUsers.html";
     }
 }
