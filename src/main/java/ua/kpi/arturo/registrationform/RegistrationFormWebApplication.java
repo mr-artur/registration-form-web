@@ -9,5 +9,4 @@ public class RegistrationFormWebApplication {
     public static void main(String[] args) {
         SpringApplication.run(RegistrationFormWebApplication.class, args);
     }
-
 }
