@@ -31,8 +31,14 @@ public class User {
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
+    @Column(name = "first_name_native", nullable = false)
+    private String firstNameNative;
+
     @Column(name = "last_name", nullable = false)
     private String lastName;
+
+    @Column(name = "last_name_native", nullable = false)
+    private String lastNameNative;
 
     @Column(nullable = false)
     private String email;

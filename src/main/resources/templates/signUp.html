@@ -31,6 +31,24 @@
                     <div class="input-group">
                         <div class="input-group-prepend shadow-sm">
                             <span class="form__element__label input-group-text"
+                                  id="firstNameNative_prepend"
+                                  th:text="#{signUp.label.firstNameNative}"
+                            >
+                            </span>
+                        </div>
+                        <input type="text"
+                               class="form-control shadow-sm"
+                               name="firstNameNative"
+                               th:placeholder="#{signUp.placeholder.firstNameNative}"
+                               aria-describedby="firstNameNative_prepend"
+                               required
+                        />
+                    </div>
+                </div>
+                <div class="form__element mb-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend shadow-sm">
+                            <span class="form__element__label input-group-text"
                                   id="lastName_prepend"
                                   th:text="#{signUp.label.lastName}"
                             >
@@ -41,6 +59,24 @@
                                name="lastName"
                                th:placeholder="#{signUp.placeholder.lastName}"
                                aria-describedby="lastName_prepend"
+                               required
+                        />
+                    </div>
+                </div>
+                <div class="form__element mb-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend shadow-sm">
+                            <span class="form__element__label input-group-text"
+                                  id="lastNameNative_prepend"
+                                  th:text="#{signUp.label.lastNameNative}"
+                            >
+                            </span>
+                        </div>
+                        <input type="text"
+                               class="form-control shadow-sm"
+                               name="lastNameNative"
+                               th:placeholder="#{signUp.placeholder.lastNameNative}"
+                               aria-describedby="lastNameNative_prepend"
                                required
                         />
                     </div>
