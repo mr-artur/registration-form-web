@@ -1,4 +1,4 @@
-#form {
+.form {
     max-width: 450px;
     margin: auto;
 }
@@ -13,7 +13,21 @@
 }
 
 .form__element__label {
+    display: flex;
+    justify-content: center;
     width: 110px;
+}
+
+.form-extended {
+    max-width: 600px;
+}
+
+.form-extended .form__element {
+    width: 440px;
+}
+
+.form-extended .form__element__label {
+    width: 200px;
 }
 
 a, a:hover {

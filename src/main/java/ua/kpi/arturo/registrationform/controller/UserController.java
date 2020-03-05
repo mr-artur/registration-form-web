@@ -2,7 +2,6 @@ package ua.kpi.arturo.registrationform.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +15,7 @@ import ua.kpi.arturo.registrationform.entity.User;
 import ua.kpi.arturo.registrationform.service.UserService;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Controller
@@ -27,6 +24,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    private NativeUserBuilder nativeUserBuilder = new NativeUserBuilder();
 
     @GetMapping(value = "/login")
     public String signInPage() {
@@ -57,36 +56,9 @@ public class UserController {
 
     @GetMapping(value = "/all")
     public String getAll(Model model) {
-        Locale locale = LocaleContextHolder.getLocale();
         List<User> users = userService.getAllUsers();
-        List<NativeUserDto> nativeUsers = users.stream()
-            .map(user -> createNativeUser(user, locale))
-            .collect(Collectors.toList());
+        List<NativeUserDto> nativeUsers = nativeUserBuilder.localizeUsers(users);
         model.addAttribute("users", nativeUsers);
         return "allUsers.html";
-    }
-
-    private NativeUserDto createNativeUser(User user, Locale locale) {
-        NativeUserDto nativeUser = buildStableFields(user);
-        setLocalizedFields(nativeUser, user, locale);
-        return nativeUser;
-    }
-
-    private void setLocalizedFields(NativeUserDto nativeUser, User user, Locale locale) {
-        if(locale.equals(Locale.ENGLISH)) {
-            nativeUser.setFirstName(user.getFirstName());
-            nativeUser.setLastName(user.getLastName());
-        } else {
-            nativeUser.setFirstName(user.getFirstNameNative());
-            nativeUser.setLastName(user.getLastNameNative());
-        }
-    }
-
-    private NativeUserDto buildStableFields(User user) {
-        return NativeUserDto.builder()
-            .id(user.getId())
-            .email(user.getEmail())
-            .role(user.getRole())
-            .build();
     }
 }
