@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Login form's Main</title>
+    <title th:text="#{signIn.label}"></title>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="/css/form.css">
 </head>
 <body class="bg-light">
-<div id="mainContainer" class="container mt-5">
+<th:block th:replace="fragments::languages"></th:block>
+<div class="container mt-5">
     <form id="form"
           class="form d-flex flex-column align-items-center p-4 shadow"
           data-url="/users/login"
@@ -59,10 +60,9 @@
             </button>
         </a>
     </form>
-    <button class="btn-language" value="en">English pls</button>
-    <button class="btn-language" value="ru">Russian pls</button>
+    <div id="alert-success" th:text="#{alert.success}" class="alert alert-success mt-4"></div>
+    <div id="alert-error" th:text="#{alert.error}" class="alert alert-danger mt-4"></div>
 </div>
 <script type="text/javascript" src="/js/form.js"></script>
-<script type="text/javascript" src="/js/changeLanguage.js"></script>
 </body>
 </html>

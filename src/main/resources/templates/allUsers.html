@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="fragments::head"></head>
     <body style="font-family:'Jura'">
+    <th:block th:replace="fragments::languages"></th:block>
         <div class="container my-5">
             <div class="shadow-lg p-5 mb-5 rounded text-center">
                 <h2 th:text="#{table.label}" class="mb-4"></h2>
