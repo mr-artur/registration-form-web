@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import ua.kpi.arturo.registrationform.dto.LoginDto;
 import ua.kpi.arturo.registrationform.entity.User;
 import ua.kpi.arturo.registrationform.service.UserService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -21,6 +23,22 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @GetMapping(value = "/login")
+    public String signInPage() {
+        return "signIn.html";
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping(value = "/login")
+    public void login(LoginDto dto){
+        Optional<User> user = userService.findByEmail(dto);
+        if(user.isPresent()) {
+            log.info("Found user : {}", user.get());
+        } else {
+            log.info("User with such email : {} does not exist", dto.getEmail());
+        }
+    }
 
     @GetMapping(value = "/new")
     public String signUpPage() {
