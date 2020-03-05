@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
         <title>Sign Up</title>
@@ -14,20 +14,20 @@
                   class="form d-flex flex-column align-items-center p-4 shadow"
                   data-url="/users/save"
             >
-                <h2 class="mb-4">Sign Up</h2>
+                <h2 th:text="#{signUp.label}" class="mb-4"></h2>
                 <div class="form__element mb-3">
                     <div class="input-group">
                         <div class="input-group-prepend shadow-sm">
                             <span class="form__element__label input-group-text"
                                   id="firstName_prepend"
+                                  th:text="#{signUp.label.firstName}"
                             >
-                                First Name
                             </span>
                         </div>
                         <input type="text"
                                class="form-control shadow-sm"
                                name="firstName"
-                               placeholder="First Name"
+                               th:placeholder="#{signUp.placeholder.firstName}"
                                aria-describedby="firstName_prepend"
                                required
                         />
@@ -38,14 +38,14 @@
                         <div class="input-group-prepend shadow-sm">
                             <span class="form__element__label input-group-text"
                                   id="lastName_prepend"
+                                  th:text="#{signUp.label.lastName}"
                             >
-                                Last Name
                             </span>
                         </div>
                         <input type="text"
                                class="form-control shadow-sm"
                                name="lastName"
-                               placeholder="Last Name"
+                               th:placeholder="#{signUp.placeholder.lastName}"
                                aria-describedby="lastName_prepend"
                                required
                         />
@@ -56,14 +56,14 @@
                         <div class="input-group-prepend shadow-sm">
                             <span class="form__element__label input-group-text"
                                   id="email_prepend"
+                                  th:text="#{signUp.label.email}"
                             >
-                                Email
                             </span>
                         </div>
                         <input type="email"
                                class="form-control shadow-sm"
                                name="email"
-                               placeholder="Email"
+                               th:placeholder="#{signUp.placeholder.email}"
                                aria-describedby="email_prepend"
                                required
                         />
@@ -74,25 +74,23 @@
                         <div class="input-group-prepend shadow-sm">
                             <span class="form__element__label input-group-text"
                                   id="role_prepend"
+                                  th:text="#{signUp.label.role}"
                             >
-                                Role
                             </span>
                         </div>
                         <input type="text"
                                class="form-control shadow-sm"
                                name="role"
-                               placeholder="Role"
+                               th:placeholder="#{signUp.placeholder.role}"
                                aria-describedby="role_prepend"
                                required
                         />
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success mb-4">
-                    Submit
+                <button th:text="#{signUp.button.submit}" type="submit" class="btn btn-success mb-4">
                 </button>
                 <a href="/">
-                    <button type="button" class="btn btn-info">
-                        To Login
+                    <button th:text="#{signUp.button.signIn}" type="button" class="btn btn-info">
                     </button>
                 </a>
             </form>

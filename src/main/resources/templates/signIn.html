@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Login form's Main</title>
@@ -15,20 +15,20 @@
           class="form d-flex flex-column align-items-center p-4 shadow"
           data-url="/users/login"
     >
-        <h2 class="mb-4">Sign In</h2>
+        <h2 th:text="#{signIn.label}" class="mb-4"></h2>
         <div class="form__element mb-3">
             <div class="input-group">
                 <div class="input-group-prepend shadow-sm">
                             <span class="form__element__label input-group-text"
                                   id="email_prepend"
+                                  th:text="#{signIn.label.email}"
                             >
-                                Email
                             </span>
                 </div>
                 <input type="email"
                        class="form-control shadow-sm"
                        name="email"
-                       placeholder="Email"
+                       th:placeholder="#{signIn.placeholder.email}"
                        aria-describedby="email_prepend"
                        required
                 />
@@ -39,29 +39,30 @@
                 <div class="input-group-prepend shadow-sm">
                             <span class="form__element__label input-group-text"
                                   id="password_prepend"
+                                  th:text="#{signIn.label.password}"
                             >
-                                Password
                             </span>
                 </div>
                 <input type="password"
                        class="form-control shadow-sm"
                        name="password"
-                       placeholder="Password"
+                       th:placeholder="#{signIn.placeholder.password}"
                        aria-describedby="password_prepend"
                        required
                 />
             </div>
         </div>
-        <button type="submit" class="btn btn-success mb-4">
-            Submit
+        <button th:text="#{signIn.button.submit}" type="submit" class="btn btn-success mb-4">
         </button>
         <a href="/users/new">
-            <button type="button" class="btn btn-info">
-                Sign Up
+            <button th:text="#{signIn.button.signUp}" type="button" class="btn btn-info">
             </button>
         </a>
     </form>
+    <button class="btn-language" value="en">English pls</button>
+    <button class="btn-language" value="ru">Russian pls</button>
 </div>
 <script type="text/javascript" src="/js/form.js"></script>
+<script type="text/javascript" src="/js/changeLanguage.js"></script>
 </body>
 </html>
