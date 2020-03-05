@@ -45,11 +45,12 @@
                 />
             </div>
         </div>
-        <button th:text="#{signIn.button.submit}" type="submit" class="btn btn-success mb-4">
-        </button>
+        <button th:text="#{signIn.button.submit}" type="submit" class="btn btn-success mb-4"></button>
         <a href="/users/new">
-            <button th:text="#{signIn.button.signUp}" type="button" class="btn btn-info">
-            </button>
+            <button th:text="#{link.signUp}" type="button" class="btn btn-info mb-4"></button>
+        </a>
+        <a href="/users/all">
+            <button th:text="#{link.all}" type="button" class="btn btn-danger"></button>
         </a>
     </form>
     <div id="alert-success" th:text="#{alert.success}" class="alert alert-success mt-4"></div>

@@ -117,11 +117,12 @@
                         />
                     </div>
                 </div>
-                <button th:text="#{signUp.button.submit}" type="submit" class="btn btn-success mb-4">
-                </button>
-                <a href="/">
-                    <button th:text="#{signUp.button.signIn}" type="button" class="btn btn-info">
-                    </button>
+                <button th:text="#{signUp.button.submit}" type="submit" class="btn btn-success mb-4"></button>
+                <a href="/users/login">
+                    <button th:text="#{link.signIn}" type="button" class="btn btn-info mb-4"></button>
+                </a>
+                <a href="/users/all">
+                    <button th:text="#{link.all}" type="button" class="btn btn-danger"></button>
                 </a>
             </form>
             <div id="alert-success" th:text="#{alert.success}" class="alert alert-success mt-4"></div>
