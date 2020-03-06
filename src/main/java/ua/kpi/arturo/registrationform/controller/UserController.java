@@ -12,6 +12,7 @@ import ua.kpi.arturo.registrationform.dto.LoginDto;
 import ua.kpi.arturo.registrationform.dto.NativeUserDto;
 import ua.kpi.arturo.registrationform.entity.RoleType;
 import ua.kpi.arturo.registrationform.entity.User;
+import ua.kpi.arturo.registrationform.exception.UserNotFoundException;
 import ua.kpi.arturo.registrationform.service.UserService;
 
 import java.util.List;
@@ -40,7 +41,13 @@ public class UserController {
             log.info("Found user : {}", user.get());
         } else {
             log.info("User with such email : {} does not exist", dto.getEmail());
+            throw new UserNotFoundException(String.format("User with such email : %s does not exist", dto.getEmail()));
         }
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<String> handleUserNotFound() {
+        return new ResponseEntity<>("User with such email doest not exist", HttpStatus.NOT_FOUND);
     }
 
     @GetMapping(value = "/new")
@@ -56,9 +63,9 @@ public class UserController {
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity handleDuplicateEmails(DataIntegrityViolationException e) {
-        log.error("Request to save user with already existing email : ", e.getCause().getCause());
-        return new ResponseEntity("User with such email already exists", HttpStatus.CONFLICT);
+    public ResponseEntity<String> handleDuplicateEmails(DataIntegrityViolationException e) {
+        log.info("Request to save user with already existing email : ", e);
+        return new ResponseEntity<>("User with such email already exists", HttpStatus.CONFLICT);
     }
 
     @GetMapping(value = "/all")

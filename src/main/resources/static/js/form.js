@@ -24,7 +24,9 @@ const serializeData = inputs => {
 
 const resetInputs = inputs => {
     for (let i = 0; i < inputs.length; i++) {
-        inputs[i].value = "";
+        if (!(inputs[i] instanceof HTMLSelectElement)) {
+            inputs[i].value = "";
+        }
     }
 }
 
