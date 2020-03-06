@@ -50,7 +50,7 @@ class UserServiceImplTest {
     }
 
     @Test
-    public void findbyEmail_shouldReturnOptionalUser_whenUserWithSuchEmailExistsInDB() {
+    public void findByEmail_shouldReturnOptionalUser_whenUserWithSuchEmailExistsInDB() {
         Mockito.when(userRepository.findByEmail(user.getEmail())).thenReturn(Optional.of(user));
 
         Optional<User> found = userService.findByEmail(loginDto);
@@ -60,7 +60,7 @@ class UserServiceImplTest {
     }
 
     @Test
-    public void findbyEmail_shouldReturnEmptyOptional_whenUserWithSuchEmailDoesNotExistInDB() {
+    public void findByEmail_shouldReturnEmptyOptional_whenUserWithSuchEmailDoesNotExistInDB() {
         Mockito.when(userRepository.findByEmail(notExistingLoginDto.getEmail())).thenReturn(Optional.empty());
 
         Optional<User> found = userService.findByEmail(notExistingLoginDto);
