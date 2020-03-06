@@ -8,6 +8,7 @@ import ua.kpi.arturo.registrationform.entity.User;
 import ua.kpi.arturo.registrationform.repository.UserRepository;
 import ua.kpi.arturo.registrationform.service.UserService;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import java.util.Optional;
 

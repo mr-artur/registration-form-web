@@ -2,20 +2,18 @@ package ua.kpi.arturo.registrationform.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 import ua.kpi.arturo.registrationform.dto.LoginDto;
 import ua.kpi.arturo.registrationform.dto.NativeUserDto;
 import ua.kpi.arturo.registrationform.entity.RoleType;
 import ua.kpi.arturo.registrationform.entity.User;
 import ua.kpi.arturo.registrationform.service.UserService;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,6 +53,12 @@ public class UserController {
     @PostMapping(value = "/save")
     public void save(User user) {
         userService.save(user);
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity handleDuplicateEmails(DataIntegrityViolationException e) {
+        log.error("Request to save user with already existing email : ", e.getCause().getCause());
+        return new ResponseEntity("User with such email already exists", HttpStatus.CONFLICT);
     }
 
     @GetMapping(value = "/all")

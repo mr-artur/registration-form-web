@@ -1,13 +1,15 @@
 const form = document.getElementById("form");
-const alertSuccess = document.getElementById("alert-success");
-const alertError = document.getElementById("alert-error");
+const signInSuccess = document.getElementById("sign-in-success");
+const signInError = document.getElementById("sign-in-error");
+const signUpSuccess = document.getElementById("sign-up-success");
+const signUpError = document.getElementById("sign-up-error");
 
 const handleSubmit = e => {
     e.preventDefault();
     const inputs = form.getElementsByClassName("input");
     const data = serializeData(inputs);
     resetInputs(inputs);
-    const { dataset: { url } } = form;
+    const {dataset: {url}} = form;
     sendForm(url, data);
 }
 
@@ -26,6 +28,21 @@ const resetInputs = inputs => {
     }
 }
 
+const showResponseMessage = () => {
+    return response => {
+        const {status} = response;
+        if (status == 200) {
+            showTemporarily(signInSuccess);
+        } else if (status == 201) {
+            showTemporarily(signUpSuccess);
+        } else if (status == 404) {
+            showTemporarily(signInError);
+        } else if (status == 409) {
+            showTemporarily(signUpError);
+        }
+    };
+}
+
 const sendForm = (url, data) => {
     fetch(
         url,
@@ -36,20 +53,12 @@ const sendForm = (url, data) => {
             },
             body: data
         }
-    ).then(
-        data => showSuccess(),
-        error => showError()
-    );
+    ).then(showResponseMessage());
 }
 
-const showSuccess = () => {
-    show(alertSuccess);
-    setTimeout(() => hide(alertSuccess), 2500);
-}
-
-const showError = () => {
-    show(alertError);
-    setTimeout(() => hide(alertError), 2500);
+const showTemporarily = alert => {
+    show(alert);
+    setTimeout(() => hide(alert), 2500);
 }
 
 const hide = element => {
@@ -64,12 +73,20 @@ const init = () => {
     form.addEventListener("submit", handleSubmit);
 }
 
-if (alertSuccess) {
-    hide(alertSuccess);
+if (signInSuccess) {
+    hide(signInSuccess);
 }
 
-if (alertError) {
-    hide(alertError);
+if (signInError) {
+    hide(signInError);
+}
+
+if (signUpSuccess) {
+    hide(signUpSuccess);
+}
+
+if (signUpError) {
+    hide(signUpError);
 }
 
 if (form) {
