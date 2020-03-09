@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 import ua.kpi.arturo.registrationform.dto.UserDto;
 import ua.kpi.arturo.registrationform.entity.Role;
@@ -53,10 +54,11 @@ public class AuthController {
     }
 
     @RequestMapping("/newuser")
-    public RedirectView newUser(@ModelAttribute User user) {
+    public RedirectView newUser(@ModelAttribute User user, RedirectAttributes redirectAttributes) {
         RedirectView redirectView = new RedirectView();
 
         userService.save(getUserWithDetails(user));
+        redirectAttributes.addFlashAttribute("user", user);
         redirectView.setUrl("/login?signedup");
         return redirectView;
     }
@@ -104,9 +106,9 @@ public class AuthController {
         return role.equals(Role.ROLE_ADMIN) || role.equals(Role.ROLE_SUPERADMIN);
     }
 
-    private User getCurrentUser() {
+    private UserDto getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDto dto = (UserDto) authentication.getPrincipal();
-        return dto.getUser();
+        return dto;
     }
 }

@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import ua.kpi.arturo.registrationform.dto.UserDto;
 import ua.kpi.arturo.registrationform.entity.User;
+import ua.kpi.arturo.registrationform.mapper.UserMapper;
 import ua.kpi.arturo.registrationform.repository.UserRepository;
 import ua.kpi.arturo.registrationform.service.UserService;
 
@@ -19,6 +19,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    private UserMapper userMapper = UserMapper.INSTANCE;
 
     @Override
     public void save(User user) {
@@ -37,6 +39,6 @@ public class UserServiceImpl implements UserService {
         if (user.isEmpty()) {
             throw new UsernameNotFoundException("User " + username + " was not found");
         }
-        return new UserDto(user.get());
+        return userMapper.toUserDto(user.get());
     }
 }
