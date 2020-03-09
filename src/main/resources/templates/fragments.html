@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
     <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/languages.css">
-    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/main.css"/>
     <link rel="stylesheet" href="/css/form.css">
 </head>
 
@@ -14,3 +14,7 @@
     <button type="button" class="btn btn-secondary btn-language" value="ru">RU</button>
     <script type="text/javascript" src="/js/changeLanguage.js"></script>
 </div>
+
+<a th:fragment="logout" href="/logout" class="logout" xmlns:th="http://www.w3.org/1999/xhtml">
+    <button th:text="#{link.logOut}" type="button" class="btn btn-danger"></button>
+</a>

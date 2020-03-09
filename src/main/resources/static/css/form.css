@@ -1,5 +1,5 @@
 .form {
-    max-width: 450px;
+    max-width: 490px;
     margin: auto;
 }
 
@@ -9,13 +9,13 @@
 }
 
 .form__element {
-    width: 350px;
+    width: 390px;
 }
 
 .form__element__label {
     display: flex;
     justify-content: center;
-    width: 110px;
+    width: 150px;
 }
 
 .form-extended {

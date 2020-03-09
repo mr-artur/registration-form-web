@@ -4,25 +4,20 @@
     <body class="bg-light">
         <th:block th:replace="fragments::languages"></th:block>
         <div class="container mt-5">
-            <form id="form"
+            <div class="alert alert-danger mb-4" th:text="#{signUp.duplicate}" th:if="${duplicate}"></div>
+            <form action="#" th:action="@{/newuser}" th:object="${user}" method="post"
                   class="form form-extended d-flex flex-column align-items-center p-4 shadow"
-                  data-url="/users/save"
             >
                 <h2 th:text="#{signUp.label}" class="mb-4"></h2>
                 <div class="form__element mb-3">
                     <div class="input-group">
                         <div class="input-group-prepend shadow-sm">
-                            <span class="form__element__label input-group-text"
-                                  id="firstName_prepend"
-                                  th:text="#{signUp.label.firstName}"
-                            >
-                            </span>
+                            <span class="form__element__label input-group-text" th:text="#{signUp.label.firstName}"></span>
                         </div>
                         <input type="text"
+                               th:field="*{firstName}"
                                class="input form-control shadow-sm"
-                               name="firstName"
                                th:placeholder="#{signUp.placeholder.firstName}"
-                               aria-describedby="firstName_prepend"
                                required
                         />
                     </div>
@@ -30,17 +25,12 @@
                 <div class="form__element mb-3">
                     <div class="input-group">
                         <div class="input-group-prepend shadow-sm">
-                            <span class="form__element__label input-group-text"
-                                  id="firstNameNative_prepend"
-                                  th:text="#{signUp.label.firstNameNative}"
-                            >
-                            </span>
+                            <span class="form__element__label input-group-text" th:text="#{signUp.label.firstNameNative}"></span>
                         </div>
                         <input type="text"
+                               th:field="*{firstNameNative}"
                                class="input form-control shadow-sm"
-                               name="firstNameNative"
                                th:placeholder="#{signUp.placeholder.firstNameNative}"
-                               aria-describedby="firstNameNative_prepend"
                                required
                         />
                     </div>
@@ -48,17 +38,12 @@
                 <div class="form__element mb-3">
                     <div class="input-group">
                         <div class="input-group-prepend shadow-sm">
-                            <span class="form__element__label input-group-text"
-                                  id="lastName_prepend"
-                                  th:text="#{signUp.label.lastName}"
-                            >
-                            </span>
+                            <span class="form__element__label input-group-text" th:text="#{signUp.label.lastName}"></span>
                         </div>
                         <input type="text"
+                               th:field="*{lastName}"
                                class="input form-control shadow-sm"
-                               name="lastName"
                                th:placeholder="#{signUp.placeholder.lastName}"
-                               aria-describedby="lastName_prepend"
                                required
                         />
                     </div>
@@ -66,17 +51,12 @@
                 <div class="form__element mb-3">
                     <div class="input-group">
                         <div class="input-group-prepend shadow-sm">
-                            <span class="form__element__label input-group-text"
-                                  id="lastNameNative_prepend"
-                                  th:text="#{signUp.label.lastNameNative}"
-                            >
-                            </span>
+                            <span class="form__element__label input-group-text" th:text="#{signUp.label.lastNameNative}"></span>
                         </div>
                         <input type="text"
+                               th:field="*{lastNameNative}"
                                class="input form-control shadow-sm"
-                               name="lastNameNative"
                                th:placeholder="#{signUp.placeholder.lastNameNative}"
-                               aria-describedby="lastNameNative_prepend"
                                required
                         />
                     </div>
@@ -84,17 +64,12 @@
                 <div class="form__element mb-3">
                     <div class="input-group">
                         <div class="input-group-prepend shadow-sm">
-                            <span class="form__element__label input-group-text"
-                                  id="email_prepend"
-                                  th:text="#{signUp.label.email}"
-                            >
-                            </span>
+                            <span class="form__element__label input-group-text" th:text="#{signUp.label.email}"></span>
                         </div>
                         <input type="email"
+                               th:field="*{email}"
                                class="input form-control shadow-sm"
-                               name="email"
                                th:placeholder="#{signUp.placeholder.email}"
-                               aria-describedby="email_prepend"
                                required
                         />
                     </div>
@@ -102,28 +77,47 @@
                 <div class="form__element mb-4">
                     <div class="input-group">
                         <div class="input-group-prepend shadow-sm">
-                            <span class="form__element__label input-group-text"
-                                  id="role_prepend"
-                                  th:text="#{signUp.label.role}"
-                            >
-                            </span>
+                            <span class="form__element__label input-group-text" th:text="#{signUp.label.role}"></span>
                         </div>
-                        <select name="role" class="input custom-select" aria-describedby="role_prepend">
-                            <option th:each="role : ${roles}" th:value="${role}" th:text="${role}"></option>
+                        <select th:field="*{role}" class="input custom-select">
+                            <option th:each="role : ${roles}"
+                                    th:value="${role}"
+                                    th:text="${role.roleName}"
+                            ></option>
                         </select>
                     </div>
                 </div>
-                <button th:text="#{signUp.button.submit}" type="submit" class="btn btn-success mb-4"></button>
-                <a href="/users/login">
-                    <button th:text="#{link.signIn}" type="button" class="btn btn-info mb-4"></button>
-                </a>
-                <a href="/users/all">
-                    <button th:text="#{link.all}" type="button" class="btn btn-danger"></button>
+                <div class="form__element mb-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend shadow-sm">
+                            <span class="form__element__label input-group-text" th:text="#{signUp.label.username}"></span>
+                        </div>
+                        <input type="text"
+                               th:field="*{username}"
+                               class="input form-control shadow-sm"
+                               th:placeholder="#{signUp.placeholder.username}"
+                               required
+                        />
+                    </div>
+                </div>
+                <div class="form__element mb-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend shadow-sm">
+                            <span class="form__element__label input-group-text" th:text="#{signUp.label.password}"></span>
+                        </div>
+                        <input type="password"
+                               th:field="*{password}"
+                               class="input form-control shadow-sm"
+                               th:placeholder="#{signUp.placeholder.password}"
+                               required
+                        />
+                    </div>
+                </div>
+                <button th:text="#{signUp.button.submit}" type="submit" class="btn btn-success mb-4 mt-3"></button>
+                <a href="/login">
+                    <button th:text="#{link.logIn}" type="button" class="btn btn-info"></button>
                 </a>
             </form>
-            <div id="sign-up-success" th:text="#{alert.success.userCreated}" class="alert alert-success mt-4"></div>
-            <div id="sign-up-error" th:text="#{alert.error.duplicateEmails}" class="alert alert-danger mt-4"></div>
         </div>
-    <script type="text/javascript" src="/js/form.js"></script>
     </body>
 </html>

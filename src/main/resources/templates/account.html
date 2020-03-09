@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments::head(title='All users')"></head>
+    <body>
+        <th:block th:replace="fragments::logout"></th:block>
+        <th:block th:replace="fragments::languages"></th:block>
+        <div class="container my-5">
+            <div th:text="#{account.welcome}" class="shadow-lg p-5 mb-5 rounded text-center"></div>
+        </div>
+    </body>
+</html>

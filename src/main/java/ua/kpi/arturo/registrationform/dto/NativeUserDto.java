@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import ua.kpi.arturo.registrationform.entity.RoleType;
+import ua.kpi.arturo.registrationform.entity.Role;
 
 @Builder
 @Setter
@@ -22,5 +22,5 @@ public class NativeUserDto {
      */
     private String lastName;
     private String email;
-    private RoleType role;
+    private Role role;
 }

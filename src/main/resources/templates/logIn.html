@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head th:replace="fragments::head(title='Log In')"></head>
+    <body class="bg-light">
+        <th:block th:replace="fragments::languages"></th:block>
+        <div class="container mt-5">
+            <div class="alert alert-danger mb-4" th:text="#{logIn.error}" th:if="${error}"></div>
+            <div class="alert alert-info mb-4" th:text="#{logIn.logout}" th:if="${logout}"></div>
+            <div class="alert alert-success mb-4" th:text="#{logIn.signedUp}" th:if="${signedUp}"></div>
+            <form method="post"
+                  class="form d-flex flex-column align-items-center p-4 shadow"
+            >
+                <h2 th:text="#{logIn.label}" class="mb-4"></h2>
+                <div class="form__element mb-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend shadow-sm">
+                            <span class="form__element__label input-group-text" th:text="#{logIn.label.username}"></span>
+                        </div>
+                        <input type="text"
+                               class="input form-control shadow-sm"
+                               name="username"
+                               th:placeholder="#{logIn.placeholder.username}"
+                               required
+                        />
+                    </div>
+                </div>
+                <div class="form__element mb-4">
+                    <div class="input-group">
+                        <div class="input-group-prepend shadow-sm">
+                            <span class="form__element__label input-group-text" th:text="#{logIn.label.password}"></span>
+                        </div>
+                        <input type="password"
+                               class="input form-control shadow-sm"
+                               name="password"
+                               th:placeholder="#{logIn.placeholder.password}"
+                               required
+                        />
+                    </div>
+                </div>
+                <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
+                <button th:text="#{logIn.button.submit}" type="submit" class="btn btn-success mb-4 mt-2"></button>
+                <a href="/signup">
+                    <button th:text="#{link.signUp}" type="button" class="btn btn-info"></button>
+                </a>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="fragments::head(title='All users')"></head>
-    <body style="font-family:'Jura'">
+    <body>
+        <th:block th:replace="fragments::logout"></th:block>
         <th:block th:replace="fragments::languages"></th:block>
         <div class="container my-5">
             <div class="shadow-lg p-5 mb-5 rounded text-center">
@@ -10,31 +11,25 @@
                     <thead>
                         <tr>
                             <th th:text="#{table.header.id}" class="text-center"></th>
-                            <th th:text="#{table.header.firstName}" class="text-center"> First Name </th>
-                            <th th:text="#{table.header.lastName}" class="text-center"> Last Name </th>
-                            <th th:text="#{table.header.email}" class="text-center"> Email </th>
-                            <th th:text="#{table.header.role}" class="text-center"> Role </th>
+                            <th th:text="#{table.header.firstName}" class="text-center"></th>
+                            <th th:text="#{table.header.lastName}" class="text-center"></th>
+                            <th th:text="#{table.header.email}" class="text-center"></th>
+                            <th th:text="#{table.header.role}" class="text-center"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:if="${users.empty}">
-                            <td colspan="5"> No Users </td>
+                            <td colspan="5"> No Users</td>
                         </tr>
                         <tr th:each="user : ${users}">
                             <td><span th:text="${user.id}"></span></td>
                             <td><span th:text="${user.firstName}"></span></td>
                             <td><span th:text="${user.lastName}"></span></td>
                             <td><span th:text="${user.email}"></span></td>
-                            <td><span th:text="${user.role}"></span></td>
+                            <td><span th:text="${user.role.roleName}"></span></td>
                         </tr>
                     </tbody>
                 </table>
-                <a href="/users/new">
-                    <button th:text="#{link.signUp}" type="button" class="btn btn-info"></button>
-                </a>
-                <a href="/users/login">
-                    <button th:text="#{link.signIn}" type="button" class="btn btn-info ml-3"></button>
-                </a>
             </div>
         </div>
     </body>
