@@ -19,7 +19,7 @@
     <button th:text="#{link.logOut}" type="button" class="btn btn-danger"></button>
 </a>
 
-<div th:fragment="signUpInputText"
+<th:block th:fragment="signUpInputText"
      th:object="${user}"
      th:replace="fragments::signUpInput(type='text',
                                         label=${label},
@@ -27,9 +27,9 @@
                                         field=${field},
                                         placeholder=${placeholder})"
      xmlns:th="http://www.w3.org/1999/xhtml"
-></div>
+></th:block>
 
-<div th:fragment="signUpInputEmail"
+<th:block th:fragment="signUpInputEmail"
      th:object="${user}"
      th:replace="fragments::signUpInput(type='email',
                                         label=${label},
@@ -37,9 +37,9 @@
                                         field=${field},
                                         placeholder=${placeholder})"
      xmlns:th="http://www.w3.org/1999/xhtml"
-></div>
+></th:block>
 
-<div th:fragment="signUpInputPassword"
+<th:block th:fragment="signUpInputPassword"
      th:object="${user}"
      th:replace="fragments::signUpInput(type='password',
                                         label=${label},
@@ -47,9 +47,9 @@
                                         field=${field},
                                         placeholder=${placeholder})"
      xmlns:th="http://www.w3.org/1999/xhtml"
-></div>
+></th:block>
 
-<div th:fragment="signUpSelectRole"
+<th:block th:fragment="signUpSelectRole"
      th:object="${user}"
      th:replace="fragments::signUpInput(type='select',
                                         label=${label},
@@ -57,7 +57,7 @@
                                         field=${field},
                                         roles=${roles})"
      xmlns:th="http://www.w3.org/1999/xhtml"
-></div>
+></th:block>
 
 <div th:fragment="signUpInput"
      class="form__element mb-3"
@@ -68,17 +68,17 @@
         <div class="input-group-prepend shadow-sm">
             <span class="form__element__label input-group-text" th:text="${label}"></span>
         </div>
-        <th:block th:switch="${type}" th:remove="tag">
-            <th:block th:case="'password'" th:remove="tag">
+        <th:block th:switch="${type}">
+            <th:block th:case="'password'">
                 <th:block th:replace="fragments::inputPassword(user=${user}, field=${field}, placeholder=${placeholder})"/>
             </th:block>
-            <th:block th:case="'email'" th:remove="tag">
+            <th:block th:case="'email'">
                 <th:block th:replace="fragments::inputEmail(user=${user}, field=${field}, placeholder=${placeholder})"/>
             </th:block>
-            <th:block th:case="'text'" th:remove="tag">
+            <th:block th:case="'text'">
                 <th:block th:replace="fragments::inputText(user=${user}, field=${field}, placeholder=${placeholder})"/>
             </th:block>
-            <th:block th:case="'select'" th:remove="tag">
+            <th:block th:case="'select'">
                 <th:block th:replace="fragments::selectRole(user=${user}, field=${field}, roles=${roles})"/>
             </th:block>
         </th:block>

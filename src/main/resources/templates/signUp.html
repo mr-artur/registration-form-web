@@ -9,46 +9,46 @@
                   class="form form-extended d-flex flex-column align-items-center p-4 shadow"
             >
                 <h2 th:text="#{signUp.label}" class="mb-4"></h2>
-                <div th:replace="fragments::signUpInputText(label=#{signUp.label.firstName},
+                <th:block th:replace="fragments::signUpInputText(label=#{signUp.label.firstName},
                                                             field='firstName',
                                                             user=${user},
                                                             placeholder=#{signUp.placeholder.firstName})">
-                </div>
-                <div th:replace="fragments::signUpInputText(label=#{signUp.label.firstNameNative},
+                </th:block>
+                <th:block th:replace="fragments::signUpInputText(label=#{signUp.label.firstNameNative},
                                                             field='firstNameNative',
                                                             user=${user},
                                                             placeholder=#{signUp.placeholder.firstNameNative})">
-                </div>
-                <div th:replace="fragments::signUpInputText(label=#{signUp.label.lastName},
+                </th:block>
+                <th:block th:replace="fragments::signUpInputText(label=#{signUp.label.lastName},
                                                             field='lastName',
                                                             user=${user},
                                                             placeholder=#{signUp.placeholder.lastName})">
-                </div>
-                <div th:replace="fragments::signUpInputText(label=#{signUp.label.lastNameNative},
+                </th:block>
+                <th:block th:replace="fragments::signUpInputText(label=#{signUp.label.lastNameNative},
                                                             field='lastNameNative',
                                                             user=${user},
                                                             placeholder=#{signUp.placeholder.lastNameNative})">
-                </div>
-                <div th:replace="fragments::signUpInputEmail(label=#{signUp.label.email},
+                </th:block>
+                <th:block th:replace="fragments::signUpInputEmail(label=#{signUp.label.email},
                                                             field='email',
                                                             user=${user},
                                                             placeholder=#{signUp.placeholder.email})">
-                </div>
-                <div th:replace="fragments::signUpSelectRole(label=#{signUp.label.role},
+                </th:block>
+                <th:block th:replace="fragments::signUpSelectRole(label=#{signUp.label.role},
                                                             field='role',
                                                             user=${user},
                                                             roles=${roles})">
-                </div>
-                <div th:replace="fragments::signUpInputText(label=#{signUp.label.username},
+                </th:block>
+                <th:block th:replace="fragments::signUpInputText(label=#{signUp.label.username},
                                                             field='username',
                                                             user=${user},
                                                             placeholder=#{signUp.placeholder.username})">
-                </div>
-                <div th:replace="fragments::signUpInputPassword(label=#{signUp.label.password},
+                </th:block>
+                <th:block th:replace="fragments::signUpInputPassword(label=#{signUp.label.password},
                                                             field='password',
                                                             user=${user},
                                                             placeholder=#{signUp.placeholder.password})">
-                </div>
+                </th:block>
                 <button th:text="#{signUp.button.submit}" type="submit" class="btn btn-success mb-4 mt-3"></button>
                 <a href="/login">
                     <button th:text="#{link.logIn}" type="button" class="btn btn-info"></button>
