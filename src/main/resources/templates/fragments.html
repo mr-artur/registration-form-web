@@ -20,42 +20,46 @@
 </a>
 
 <div th:fragment="signUpInputText"
-     class="form__element mb-3"
      th:object="${user}"
+     th:replace="fragments::signUpInput(type='text',
+                                        label=${label},
+                                        user=${user},
+                                        field=${field},
+                                        placeholder=${placeholder})"
      xmlns:th="http://www.w3.org/1999/xhtml"
->
-    <div class="input-group">
-        <div class="input-group-prepend shadow-sm">
-            <span class="form__element__label input-group-text" th:text="${label}"></span>
-        </div>
-        <input type="text"
-               th:field="*{__${field}__}"
-               class="input form-control shadow-sm"
-               th:placeholder="${placeholder}"
-               required
-        />
-    </div>
-</div>
+></div>
 
 <div th:fragment="signUpInputEmail"
-     class="form__element mb-3"
      th:object="${user}"
+     th:replace="fragments::signUpInput(type='email',
+                                        label=${label},
+                                        user=${user},
+                                        field=${field},
+                                        placeholder=${placeholder})"
      xmlns:th="http://www.w3.org/1999/xhtml"
->
-    <div class="input-group">
-        <div class="input-group-prepend shadow-sm">
-            <span class="form__element__label input-group-text" th:text="${label}"></span>
-        </div>
-        <input type="email"
-               th:field="*{__${field}__}"
-               class="input form-control shadow-sm"
-               th:placeholder="${placeholder}"
-               required
-        />
-    </div>
-</div>
+></div>
 
 <div th:fragment="signUpInputPassword"
+     th:object="${user}"
+     th:replace="fragments::signUpInput(type='password',
+                                        label=${label},
+                                        user=${user},
+                                        field=${field},
+                                        placeholder=${placeholder})"
+     xmlns:th="http://www.w3.org/1999/xhtml"
+></div>
+
+<div th:fragment="signUpSelectRole"
+     th:object="${user}"
+     th:replace="fragments::signUpInput(type='select',
+                                        label=${label},
+                                        user=${user},
+                                        field=${field},
+                                        roles=${roles})"
+     xmlns:th="http://www.w3.org/1999/xhtml"
+></div>
+
+<div th:fragment="signUpInput"
      class="form__element mb-3"
      th:object="${user}"
      xmlns:th="http://www.w3.org/1999/xhtml"
@@ -64,29 +68,62 @@
         <div class="input-group-prepend shadow-sm">
             <span class="form__element__label input-group-text" th:text="${label}"></span>
         </div>
-        <input type="password"
-               th:field="*{__${field}__}"
-               class="input form-control shadow-sm"
-               th:placeholder="${placeholder}"
-               required
-        />
+        <th:block th:switch="${type}" th:remove="tag">
+            <th:block th:case="'password'" th:remove="tag">
+                <th:block th:replace="fragments::inputPassword(user=${user}, field=${field}, placeholder=${placeholder})"/>
+            </th:block>
+            <th:block th:case="'email'" th:remove="tag">
+                <th:block th:replace="fragments::inputEmail(user=${user}, field=${field}, placeholder=${placeholder})"/>
+            </th:block>
+            <th:block th:case="'text'" th:remove="tag">
+                <th:block th:replace="fragments::inputText(user=${user}, field=${field}, placeholder=${placeholder})"/>
+            </th:block>
+            <th:block th:case="'select'" th:remove="tag">
+                <th:block th:replace="fragments::selectRole(user=${user}, field=${field}, roles=${roles})"/>
+            </th:block>
+        </th:block>
     </div>
 </div>
 
-<div th:fragment="signUpSelectRole"
-     class="form__element mb-4"
-     th:object="${user}"
-     xmlns:th="http://www.w3.org/1999/xhtml"
+<input th:fragment="inputText"
+       th:object="${user}"
+       type="text"
+       th:field="*{__${field}__}"
+       class="input form-control shadow-sm"
+       th:placeholder="${placeholder}"
+       required
+       xmlns:th="http://www.w3.org/1999/xhtml"
+/>
+
+<input th:fragment="inputEmail"
+       th:object="${user}"
+       type="email"
+       th:field="*{__${field}__}"
+       class="input form-control shadow-sm"
+       th:placeholder="${placeholder}"
+       required
+       xmlns:th="http://www.w3.org/1999/xhtml"
+/>
+
+<input th:fragment="inputPassword"
+       th:object="${user}"
+       type="password"
+       th:field="*{__${field}__}"
+       class="input form-control shadow-sm"
+       th:placeholder="${placeholder}"
+       required
+       xmlns:th="http://www.w3.org/1999/xhtml"
+/>
+
+<select th:fragment="selectRole"
+        th:object="${user}"
+        th:field="*{__${field}__}"
+        class="input custom-select"
+        required
+        xmlns:th="http://www.w3.org/1999/xhtml"
 >
-    <div class="input-group">
-        <div class="input-group-prepend shadow-sm">
-            <span class="form__element__label input-group-text" th:text="${label}"></span>
-        </div>
-        <select th:field="*{__${field}__}" class="input custom-select">
-            <option th:each="role : ${roles}"
-                    th:value="${role}"
-                    th:text="${role.roleName}">
-            </option>
-        </select>
-    </div>
-</div>
+    <option th:each="role : ${roles}"
+            th:value="${role}"
+            th:text="${role.roleName}">
+    </option>
+</select>
