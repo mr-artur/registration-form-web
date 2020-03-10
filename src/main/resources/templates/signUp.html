@@ -9,109 +9,45 @@
                   class="form form-extended d-flex flex-column align-items-center p-4 shadow"
             >
                 <h2 th:text="#{signUp.label}" class="mb-4"></h2>
-                <div class="form__element mb-3">
-                    <div class="input-group">
-                        <div class="input-group-prepend shadow-sm">
-                            <span class="form__element__label input-group-text" th:text="#{signUp.label.firstName}"></span>
-                        </div>
-                        <input type="text"
-                               th:field="*{firstName}"
-                               class="input form-control shadow-sm"
-                               th:placeholder="#{signUp.placeholder.firstName}"
-                               required
-                        />
-                    </div>
+                <div th:replace="fragments::signUpInputText(label=#{signUp.label.firstName},
+                                                            field='firstName',
+                                                            user=${user},
+                                                            placeholder=#{signUp.placeholder.firstName})">
                 </div>
-                <div class="form__element mb-3">
-                    <div class="input-group">
-                        <div class="input-group-prepend shadow-sm">
-                            <span class="form__element__label input-group-text" th:text="#{signUp.label.firstNameNative}"></span>
-                        </div>
-                        <input type="text"
-                               th:field="*{firstNameNative}"
-                               class="input form-control shadow-sm"
-                               th:placeholder="#{signUp.placeholder.firstNameNative}"
-                               required
-                        />
-                    </div>
+                <div th:replace="fragments::signUpInputText(label=#{signUp.label.firstNameNative},
+                                                            field='firstNameNative',
+                                                            user=${user},
+                                                            placeholder=#{signUp.placeholder.firstNameNative})">
                 </div>
-                <div class="form__element mb-3">
-                    <div class="input-group">
-                        <div class="input-group-prepend shadow-sm">
-                            <span class="form__element__label input-group-text" th:text="#{signUp.label.lastName}"></span>
-                        </div>
-                        <input type="text"
-                               th:field="*{lastName}"
-                               class="input form-control shadow-sm"
-                               th:placeholder="#{signUp.placeholder.lastName}"
-                               required
-                        />
-                    </div>
+                <div th:replace="fragments::signUpInputText(label=#{signUp.label.lastName},
+                                                            field='lastName',
+                                                            user=${user},
+                                                            placeholder=#{signUp.placeholder.lastName})">
                 </div>
-                <div class="form__element mb-3">
-                    <div class="input-group">
-                        <div class="input-group-prepend shadow-sm">
-                            <span class="form__element__label input-group-text" th:text="#{signUp.label.lastNameNative}"></span>
-                        </div>
-                        <input type="text"
-                               th:field="*{lastNameNative}"
-                               class="input form-control shadow-sm"
-                               th:placeholder="#{signUp.placeholder.lastNameNative}"
-                               required
-                        />
-                    </div>
+                <div th:replace="fragments::signUpInputText(label=#{signUp.label.lastNameNative},
+                                                            field='lastNameNative',
+                                                            user=${user},
+                                                            placeholder=#{signUp.placeholder.lastNameNative})">
                 </div>
-                <div class="form__element mb-3">
-                    <div class="input-group">
-                        <div class="input-group-prepend shadow-sm">
-                            <span class="form__element__label input-group-text" th:text="#{signUp.label.email}"></span>
-                        </div>
-                        <input type="email"
-                               th:field="*{email}"
-                               class="input form-control shadow-sm"
-                               th:placeholder="#{signUp.placeholder.email}"
-                               required
-                        />
-                    </div>
+                <div th:replace="fragments::signUpInputEmail(label=#{signUp.label.email},
+                                                            field='email',
+                                                            user=${user},
+                                                            placeholder=#{signUp.placeholder.email})">
                 </div>
-                <div class="form__element mb-4">
-                    <div class="input-group">
-                        <div class="input-group-prepend shadow-sm">
-                            <span class="form__element__label input-group-text" th:text="#{signUp.label.role}"></span>
-                        </div>
-                        <select th:field="*{role}" class="input custom-select">
-                            <option th:each="role : ${roles}"
-                                    th:value="${role}"
-                                    th:text="${role.roleName}"
-                            ></option>
-                        </select>
-                    </div>
+                <div th:replace="fragments::signUpSelectRole(label=#{signUp.label.role},
+                                                            field='role',
+                                                            user=${user},
+                                                            roles=${roles})">
                 </div>
-                <div class="form__element mb-3">
-                    <div class="input-group">
-                        <div class="input-group-prepend shadow-sm">
-                            <span class="form__element__label input-group-text" th:text="#{signUp.label.username}"></span>
-                        </div>
-                        <input type="text"
-                               th:field="*{username}"
-                               class="input form-control shadow-sm"
-                               th:placeholder="#{signUp.placeholder.username}"
-                               required
-                        />
-                    </div>
+                <div th:replace="fragments::signUpInputText(label=#{signUp.label.username},
+                                                            field='username',
+                                                            user=${user},
+                                                            placeholder=#{signUp.placeholder.username})">
                 </div>
-                <div class="form__element mb-3">
-                    <div class="input-group">
-                        <div class="input-group-prepend shadow-sm">
-                            <span class="form__element__label input-group-text" th:text="#{signUp.label.password}"></span>
-                        </div>
-                        <input type="password"
-                               th:field="*{password}"
-                               class="input form-control shadow-sm"
-                               th:placeholder="#{signUp.placeholder.password}"
-                               required
-                        />
-                    </div>
+                <div th:replace="fragments::signUpInputPassword(label=#{signUp.label.password},
+                                                            field='password',
+                                                            user=${user},
+                                                            placeholder=#{signUp.placeholder.password})">
                 </div>
                 <button th:text="#{signUp.button.submit}" type="submit" class="btn btn-success mb-4 mt-3"></button>
                 <a href="/login">

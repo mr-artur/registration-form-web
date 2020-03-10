@@ -15,6 +15,78 @@
     <script type="text/javascript" src="/js/changeLanguage.js"></script>
 </div>
 
-<a th:fragment="logout" href="/logout" class="logout" xmlns:th="http://www.w3.org/1999/xhtml">
+<a th:fragment="logOut" href="/logout" class="logout" xmlns:th="http://www.w3.org/1999/xhtml">
     <button th:text="#{link.logOut}" type="button" class="btn btn-danger"></button>
 </a>
+
+<div th:fragment="signUpInputText"
+     class="form__element mb-3"
+     th:object="${user}"
+     xmlns:th="http://www.w3.org/1999/xhtml"
+>
+    <div class="input-group">
+        <div class="input-group-prepend shadow-sm">
+            <span class="form__element__label input-group-text" th:text="${label}"></span>
+        </div>
+        <input type="text"
+               th:field="*{__${field}__}"
+               class="input form-control shadow-sm"
+               th:placeholder="${placeholder}"
+               required
+        />
+    </div>
+</div>
+
+<div th:fragment="signUpInputEmail"
+     class="form__element mb-3"
+     th:object="${user}"
+     xmlns:th="http://www.w3.org/1999/xhtml"
+>
+    <div class="input-group">
+        <div class="input-group-prepend shadow-sm">
+            <span class="form__element__label input-group-text" th:text="${label}"></span>
+        </div>
+        <input type="email"
+               th:field="*{__${field}__}"
+               class="input form-control shadow-sm"
+               th:placeholder="${placeholder}"
+               required
+        />
+    </div>
+</div>
+
+<div th:fragment="signUpInputPassword"
+     class="form__element mb-3"
+     th:object="${user}"
+     xmlns:th="http://www.w3.org/1999/xhtml"
+>
+    <div class="input-group">
+        <div class="input-group-prepend shadow-sm">
+            <span class="form__element__label input-group-text" th:text="${label}"></span>
+        </div>
+        <input type="password"
+               th:field="*{__${field}__}"
+               class="input form-control shadow-sm"
+               th:placeholder="${placeholder}"
+               required
+        />
+    </div>
+</div>
+
+<div th:fragment="signUpSelectRole"
+     class="form__element mb-4"
+     th:object="${user}"
+     xmlns:th="http://www.w3.org/1999/xhtml"
+>
+    <div class="input-group">
+        <div class="input-group-prepend shadow-sm">
+            <span class="form__element__label input-group-text" th:text="${label}"></span>
+        </div>
+        <select th:field="*{__${field}__}" class="input custom-select">
+            <option th:each="role : ${roles}"
+                    th:value="${role}"
+                    th:text="${role.roleName}">
+            </option>
+        </select>
+    </div>
+</div>
